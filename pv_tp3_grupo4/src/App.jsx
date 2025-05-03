@@ -36,9 +36,22 @@ function App() {
   // Estado para el modal
   const [modalTask, setModalTask] = useState(null);
 
-  // Separar tareas pendientes y realizadas
-  const pendingTasks = tasks.filter(t => !t.completed);
-  const completedTasks = tasks.filter(t => t.completed);
+  // Estado para búsqueda
+  const [search, setSearch] = useState('');
+  const [searchInput, setSearchInput] = useState('');
+
+  // Separar tareas pendientes y realizadas, aplicando filtro de búsqueda
+  const lowerSearch = search.trim().toLowerCase();
+  const pendingTasks = tasks.filter(
+    t => !t.completed &&
+      (t.title.toLowerCase().includes(lowerSearch) ||
+       (t.description && t.description.toLowerCase().includes(lowerSearch)))
+  );
+  const completedTasks = tasks.filter(
+    t => t.completed &&
+      (t.title.toLowerCase().includes(lowerSearch) ||
+       (t.description && t.description.toLowerCase().includes(lowerSearch)))
+  );
 
   // Agregar nueva tarea (recibe datos del formulario)
   const handleAddTask = ({ title, description, dueDate }) => {
@@ -105,7 +118,67 @@ function App() {
       </header>
       <main>
         <h2>Mis Tareas</h2>
-        <TaskInput onAddTask={handleAddTask} />
+        <div style={{
+          display: 'flex',
+          gap: 16,
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          maxWidth: 950,
+          marginBottom: 18
+        }}>
+          <TaskInput onAddTask={handleAddTask} />
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              setSearch(searchInput);
+            }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 0,
+              background: '#f7f7f7',
+              borderRadius: 10,
+              border: '1.5px solid #bbb',
+              padding: '8px 10px',
+              height: 'fit-content'
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Buscar tareas..."
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value)}
+              style={{
+                padding: '8px 12px',
+                border: 'none',
+                borderRadius: '6px 0 0 6px',
+                fontSize: '1em',
+                background: 'transparent',
+                outline: 'none',
+                minWidth: 120
+              }}
+            />
+            <button
+              type="submit"
+              style={{
+                border: 'none',
+                background: 'none',
+                padding: '8px 10px',
+                borderRadius: '0 6px 6px 0',
+                cursor: 'pointer',
+                fontSize: 20,
+                color: '#222',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+              aria-label="Buscar"
+              title="Buscar"
+            >
+              <span role="img" aria-label="lupa">🔍</span>
+            </button>
+          </form>
+        </div>
         <div
           style={{
             display: 'flex',
