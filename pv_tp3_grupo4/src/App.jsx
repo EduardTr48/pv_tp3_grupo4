@@ -33,6 +33,9 @@ function App() {
   const [editingId, setEditingId] = useState(null);
   const [editValues, setEditValues] = useState({ title: '', description: '', dueDate: '' });
 
+  // Estado para el modal
+  const [modalTask, setModalTask] = useState(null);
+
   // Agregar nueva tarea (recibe datos del formulario)
   const handleAddTask = ({ title, description, dueDate }) => {
     setTasks([
@@ -109,8 +112,56 @@ function App() {
           onEditChange={handleEditChange}
           onEditSave={handleEditSave}
           onEditCancel={handleEditCancel}
+          onCardClick={setModalTask}
         />
       </main>
+      {modalTask && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            background: 'rgba(0,0,0,0.4)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000
+          }}
+          onClick={() => setModalTask(null)}
+        >
+          <div
+            style={{
+              background: '#fff',
+              padding: 32,
+              borderRadius: 12,
+              minWidth: 320,
+              maxWidth: 400,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
+              position: 'relative'
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setModalTask(null)}
+              style={{
+                position: 'absolute',
+                top: 12,
+                right: 12,
+                background: 'none',
+                border: 'none',
+                fontSize: 22,
+                cursor: 'pointer'
+              }}
+              aria-label="Cerrar"
+            >✖</button>
+            <h2 style={{ marginBottom: 12 }}>{modalTask.title}</h2>
+            {modalTask.description && <p style={{ marginBottom: 8 }}>{modalTask.description}</p>}
+            {modalTask.dueDate && <p style={{ color: '#666' }}>Fecha límite: {modalTask.dueDate}</p>}
+            <p style={{ marginTop: 16, fontWeight: 600, color: modalTask.completed ? '#4caf50' : '#f44336' }}>
+              {modalTask.completed ? 'Completada' : 'Pendiente'}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

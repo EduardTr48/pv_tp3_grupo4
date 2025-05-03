@@ -10,7 +10,8 @@ const TaskList = ({
   editValues,
   onEditChange,
   onEditSave,
-  onEditCancel
+  onEditCancel,
+  onCardClick
 }) => (
   <section
     style={{
@@ -66,6 +67,7 @@ const TaskList = ({
             onEditChange={onEditChange}
             onEditSave={() => onEditSave(task.id)}
             onEditCancel={onEditCancel}
+            onCardClick={() => onCardClick && onCardClick(task)}
           />
         ))
       )}
@@ -82,7 +84,8 @@ TaskList.propTypes = {
   editValues: PropTypes.object,
   onEditChange: PropTypes.func,
   onEditSave: PropTypes.func,
-  onEditCancel: PropTypes.func
+  onEditCancel: PropTypes.func,
+  onCardClick: PropTypes.func
 };
 
 export default TaskList;

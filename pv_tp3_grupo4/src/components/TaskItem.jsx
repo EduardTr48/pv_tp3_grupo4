@@ -10,7 +10,8 @@ const TaskItem = ({
   editValues,
   onEditChange,
   onEditSave,
-  onEditCancel
+  onEditCancel,
+  onCardClick
 }) => {
   if (isEditing) {
     return (
@@ -59,7 +60,18 @@ const TaskItem = ({
   }
 
   return (
-    <div className={`task-item ${task.completed ? 'completed' : ''}`}>
+    <div
+      className={`task-item ${task.completed ? 'completed' : ''}`}
+      onClick={e => {
+        if (
+          e.target.classList.contains('task-checkbox') ||
+          e.target.classList.contains('delete-button') ||
+          e.target.classList.contains('edit-button')
+        ) return;
+        if (onCardClick) onCardClick();
+      }}
+      style={{ cursor: onCardClick ? 'pointer' : 'default' }}
+    >
       <input
         type="checkbox"
         checked={task.completed}
@@ -94,7 +106,8 @@ TaskItem.propTypes = {
   editValues: PropTypes.object,
   onEditChange: PropTypes.func,
   onEditSave: PropTypes.func,
-  onEditCancel: PropTypes.func
+  onEditCancel: PropTypes.func,
+  onCardClick: PropTypes.func
 };
 
 export default TaskItem;
