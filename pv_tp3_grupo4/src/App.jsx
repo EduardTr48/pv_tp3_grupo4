@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import TaskItem from './components/TaskItem';
+import TaskList from './components/TaskList';
 
 function App() {
   // Estado para el listado de tareas
@@ -95,20 +95,11 @@ function App() {
           />
           <button type="submit">Agregar</button>
         </form>
-        <div className="task-container">
-          {tasks.length === 0 ? (
-            <p className="no-tasks">No hay tareas disponibles</p>
-          ) : (
-            tasks.map(task => (
-              <TaskItem
-                key={task.id}
-                task={task}
-                onToggle={() => handleToggle(task.id)}
-                onDelete={() => handleDelete(task.id)}
-              />
-            ))
-          )}
-        </div>
+        <TaskList
+          tasks={tasks}
+          onToggle={handleToggle}
+          onDelete={handleDelete}
+        />
       </main>
     </div>
   );
