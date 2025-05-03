@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import TaskItem from './components/TaskItem';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Datos estáticos de tareas
+  const tasks = [
+    {
+      id: 1,
+      title: 'Completar tarea de programación',
+      description: 'Terminar implementación de componentes en React',
+      dueDate: '2023-06-15',
+      completed: false
+    },
+    {
+      id: 2,
+      title: 'Estudiar para el examen',
+      description: 'Repasar temas de componentes y props',
+      dueDate: '2023-06-10',
+      completed: true
+    },
+    {
+      id: 3,
+      title: 'Hacer compras',
+      description: 'Conseguir ingredientes para la cena',
+      dueDate: '2023-06-08',
+      completed: false
+    }
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <header>
+        <h1>Gestor de Tareas</h1>
+      </header>
+      
+      <main>
+        <h2>Mis Tareas</h2>
+        
+        {tasks.map(task => (
+          <TaskItem 
+            key={task.id}
+            task={task}
+          />
+        ))}
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
