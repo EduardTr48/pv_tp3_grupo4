@@ -1,7 +1,63 @@
 import PropTypes from 'prop-types';
 import './TaskItem.css';
 
-const TaskItem = ({ task, onToggle, onDelete }) => {
+const TaskItem = ({
+  task,
+  onToggle,
+  onDelete,
+  onEdit,
+  isEditing,
+  editValues,
+  onEditChange,
+  onEditSave,
+  onEditCancel
+}) => {
+  if (isEditing) {
+    return (
+      <div className={`task-item editing`}>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            onEditSave();
+          }}
+          style={{ width: '100%' }}
+        >
+          <input
+            type="text"
+            name="title"
+            value={editValues.title}
+            onChange={onEditChange}
+            required
+            className="task-title"
+            style={{ marginBottom: 8, width: '90%' }}
+            placeholder="Título"
+          />
+          <input
+            type="text"
+            name="description"
+            value={editValues.description}
+            onChange={onEditChange}
+            className="task-description"
+            style={{ marginBottom: 8, width: '90%' }}
+            placeholder="Descripción"
+          />
+          <input
+            type="date"
+            name="dueDate"
+            value={editValues.dueDate}
+            onChange={onEditChange}
+            className="task-date"
+            style={{ marginBottom: 8, width: '90%' }}
+          />
+          <div style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
+            <button type="submit" className="save-button">Guardar</button>
+            <button type="button" className="cancel-button" onClick={onEditCancel}>Cancelar</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+
   return (
     <div className={`task-item ${task.completed ? 'completed' : ''}`}>
       <input
@@ -15,7 +71,10 @@ const TaskItem = ({ task, onToggle, onDelete }) => {
         {task.description && <p className="task-description">{task.description}</p>}
         {task.dueDate && <p className="task-date">Fecha límite: {task.dueDate}</p>}
       </div>
-      <button className="delete-button" onClick={onDelete}>✖</button>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <button className="delete-button" onClick={onDelete}>✖</button>
+        <button className="edit-button" onClick={onEdit} style={{ marginTop: 4 }}>✎</button>
+      </div>
     </div>
   );
 };
@@ -29,7 +88,13 @@ TaskItem.propTypes = {
     completed: PropTypes.bool
   }).isRequired,
   onToggle: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func,
+  isEditing: PropTypes.bool,
+  editValues: PropTypes.object,
+  onEditChange: PropTypes.func,
+  onEditSave: PropTypes.func,
+  onEditCancel: PropTypes.func
 };
 
 export default TaskItem;

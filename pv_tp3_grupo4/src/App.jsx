@@ -29,6 +29,10 @@ function App() {
     }
   ]);
 
+  // Estado para edición
+  const [editingId, setEditingId] = useState(null);
+  const [editValues, setEditValues] = useState({ title: '', description: '', dueDate: '' });
+
   // Agregar nueva tarea (recibe datos del formulario)
   const handleAddTask = ({ title, description, dueDate }) => {
     setTasks([
@@ -55,6 +59,38 @@ function App() {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
+  // Iniciar edición
+  const handleEdit = (task) => {
+    setEditingId(task.id);
+    setEditValues({
+      title: task.title,
+      description: task.description,
+      dueDate: task.dueDate
+    });
+  };
+
+  // Guardar edición
+  const handleEditSave = (id) => {
+    setTasks(tasks.map(task =>
+      task.id === id
+        ? { ...task, ...editValues }
+        : task
+    ));
+    setEditingId(null);
+    setEditValues({ title: '', description: '', dueDate: '' });
+  };
+
+  // Cancelar edición
+  const handleEditCancel = () => {
+    setEditingId(null);
+    setEditValues({ title: '', description: '', dueDate: '' });
+  };
+
+  // Actualizar campos de edición
+  const handleEditChange = (e) => {
+    setEditValues({ ...editValues, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="app-container">
       <header>
@@ -67,6 +103,12 @@ function App() {
           tasks={tasks}
           onToggle={handleToggle}
           onDelete={handleDelete}
+          onEdit={handleEdit}
+          editingId={editingId}
+          editValues={editValues}
+          onEditChange={handleEditChange}
+          onEditSave={handleEditSave}
+          onEditCancel={handleEditCancel}
         />
       </main>
     </div>

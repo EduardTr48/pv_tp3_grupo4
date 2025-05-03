@@ -1,7 +1,17 @@
 import PropTypes from 'prop-types';
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks, onToggle, onDelete }) => (
+const TaskList = ({
+  tasks,
+  onToggle,
+  onDelete,
+  onEdit,
+  editingId,
+  editValues,
+  onEditChange,
+  onEditSave,
+  onEditCancel
+}) => (
   <section
     style={{
       width: '100%',
@@ -50,6 +60,12 @@ const TaskList = ({ tasks, onToggle, onDelete }) => (
             task={task}
             onToggle={() => onToggle(task.id)}
             onDelete={() => onDelete(task.id)}
+            onEdit={() => onEdit(task)}
+            isEditing={editingId === task.id}
+            editValues={editValues}
+            onEditChange={onEditChange}
+            onEditSave={() => onEditSave(task.id)}
+            onEditCancel={onEditCancel}
           />
         ))
       )}
@@ -60,7 +76,13 @@ const TaskList = ({ tasks, onToggle, onDelete }) => (
 TaskList.propTypes = {
   tasks: PropTypes.arrayOf(PropTypes.object).isRequired,
   onToggle: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func,
+  editingId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  editValues: PropTypes.object,
+  onEditChange: PropTypes.func,
+  onEditSave: PropTypes.func,
+  onEditCancel: PropTypes.func
 };
 
 export default TaskList;
