@@ -1,19 +1,21 @@
 import PropTypes from 'prop-types';
+import './TaskItem.css';
 
 const TaskItem = ({ task }) => {
   return (
-    <div>
+    <div className={`task-item ${task.completed ? 'completed' : ''}`}>
       <input 
         type="checkbox" 
         checked={task.completed}
         readOnly
+        className="task-checkbox"
       />
-      <div>
-        <h3>{task.title}</h3>
-        {task.description && <p>{task.description}</p>}
-        <p>Fecha límite: {task.dueDate}</p>
+      <div className="task-content">
+        <h3 className="task-title">{task.title}</h3>
+        {task.description && <p className="task-description">{task.description}</p>}
+        <p className="task-date">Fecha límite: {task.dueDate}</p>
       </div>
-      <button>✖</button>
+      <button className="delete-button">✖</button>
     </div>
   );
 };

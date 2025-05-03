@@ -28,7 +28,7 @@ function App() {
   ];
 
   return (
-    <div>
+    <div className="app-container">
       <header>
         <h1>Gestor de Tareas</h1>
       </header>
@@ -36,12 +36,18 @@ function App() {
       <main>
         <h2>Mis Tareas</h2>
         
-        {tasks.map(task => (
-          <TaskItem 
-            key={task.id}
-            task={task}
-          />
-        ))}
+        <div className="task-container">
+          {tasks.length === 0 ? (
+            <p className="no-tasks">No hay tareas disponibles</p>
+          ) : (
+            tasks.map(task => (
+              <TaskItem 
+                key={task.id}
+                task={task}
+              />
+            ))
+          )}
+        </div>
       </main>
     </div>
   );

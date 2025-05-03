@@ -1,79 +1,143 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  line-height: 1.6;
+  text-align: center; /* Centrar texto por defecto */
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  display: flex; /* Cambiado de grid a flex para mejor centrado */
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
 }
 
 .app-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.app-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.app-header h1 {
-  color: #2c3e50;
-}
-
-.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar contenido horizontalmente */
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto;
   background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 3px solid #000;
+  border-radius: 12px;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
-.task-list h2 {
-  color: #2c3e50;
-  border-bottom: 2px solid #eee;
+header {
+  padding: 24px 20px;
+  background-color: #fff;
+  border-bottom: 3px solid #000;
+  text-align: center;
+  width: 100%;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background-color: #000;
+}
+
+main {
+  padding: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
   padding-bottom: 10px;
-  margin-top: 0;
+  border-bottom: 2px solid #000;
+  text-align: center;
+  position: relative;
+}
+
+main h2::before, main h2::after {
+  content: '•';
+  position: absolute;
+  bottom: -5px;
+  color: #000;
+  font-size: 22px;
+}
+
+main h2::before {
+  left: 25%;
+}
+
+main h2::after {
+  right: 25%;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  padding: 10px 5px;
 }
 
 .no-tasks {
   text-align: center;
-  color: #6c757d;
+  padding: 40px 0;
+  color: #666;
   font-style: italic;
-  margin: 30px 0;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  margin: 20px 0;
+  width: 90%;
+}
+
+@media (max-width: 650px) {
+  .app-container {
+    border-width: 2px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  header {
+    padding: 18px;
+  }
+  
+  header h1 {
+    font-size: 22px;
+  }
+  
+  main {
+    padding: 18px;
+  }
+}
+
+/* Eliminar estilos originales de Vite que no necesitamos */
+.logo, .card, .read-the-docs {
+  display: none;
 }
