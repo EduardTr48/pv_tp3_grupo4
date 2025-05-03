@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
+import TaskInput from './components/TaskInput';
 
 function App() {
   // Estado para el listado de tareas
@@ -28,28 +29,18 @@ function App() {
     }
   ]);
 
-  // Estado para el texto del input
-  const [input, setInput] = useState('');
-  const [desc, setDesc] = useState('');
-  const [dueDate, setDueDate] = useState('');
-
-  // Agregar nueva tarea
-  const handleAddTask = (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
+  // Agregar nueva tarea (recibe datos del formulario)
+  const handleAddTask = ({ title, description, dueDate }) => {
     setTasks([
       ...tasks,
       {
         id: Date.now(),
-        title: input,
-        description: desc,
-        dueDate: dueDate,
+        title,
+        description,
+        dueDate,
         completed: false
       }
     ]);
-    setInput('');
-    setDesc('');
-    setDueDate('');
   };
 
   // Cambiar estado de completado
@@ -71,30 +62,7 @@ function App() {
       </header>
       <main>
         <h2>Mis Tareas</h2>
-        <form onSubmit={handleAddTask} style={{ marginBottom: 24, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
-          <input
-            type="text"
-            placeholder="Título"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            required
-            style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc', minWidth: 120 }}
-          />
-          <input
-            type="text"
-            placeholder="Descripción"
-            value={desc}
-            onChange={e => setDesc(e.target.value)}
-            style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc', minWidth: 120 }}
-          />
-          <input
-            type="date"
-            value={dueDate}
-            onChange={e => setDueDate(e.target.value)}
-            style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
-          />
-          <button type="submit">Agregar</button>
-        </form>
+        <TaskInput onAddTask={handleAddTask} />
         <TaskList
           tasks={tasks}
           onToggle={handleToggle}
