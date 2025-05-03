@@ -36,6 +36,10 @@ function App() {
   // Estado para el modal
   const [modalTask, setModalTask] = useState(null);
 
+  // Separar tareas pendientes y realizadas
+  const pendingTasks = tasks.filter(t => !t.completed);
+  const completedTasks = tasks.filter(t => t.completed);
+
   // Agregar nueva tarea (recibe datos del formulario)
   const handleAddTask = ({ title, description, dueDate }) => {
     setTasks([
@@ -102,18 +106,49 @@ function App() {
       <main>
         <h2>Mis Tareas</h2>
         <TaskInput onAddTask={handleAddTask} />
-        <TaskList
-          tasks={tasks}
-          onToggle={handleToggle}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-          editingId={editingId}
-          editValues={editValues}
-          onEditChange={handleEditChange}
-          onEditSave={handleEditSave}
-          onEditCancel={handleEditCancel}
-          onCardClick={setModalTask}
-        />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: 32,
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            width: '100%',
+            maxWidth: 1400,
+            margin: '0 auto'
+          }}
+        >
+          <div style={{ flex: 1, minWidth: 340 }}>
+            <TaskList
+              tasks={pendingTasks}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+              editingId={editingId}
+              editValues={editValues}
+              onEditChange={handleEditChange}
+              onEditSave={handleEditSave}
+              onEditCancel={handleEditCancel}
+              onCardClick={setModalTask}
+              title="Tareas pendientes"
+            />
+          </div>
+          <div style={{ flex: 1, minWidth: 340 }}>
+            <TaskList
+              tasks={completedTasks}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+              editingId={editingId}
+              editValues={editValues}
+              onEditChange={handleEditChange}
+              onEditSave={handleEditSave}
+              onEditCancel={handleEditCancel}
+              onCardClick={setModalTask}
+              title="Tareas realizadas"
+            />
+          </div>
+        </div>
       </main>
       {modalTask && (
         <div

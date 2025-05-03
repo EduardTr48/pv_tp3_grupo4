@@ -26,7 +26,7 @@ body {
   flex-direction: column;
   align-items: center; /* Centrar contenido horizontalmente */
   width: 100%;
-  max-width: 650px;
+  max-width: 950px; /* aumentado de 650px a 950px */
   margin: 20px auto;
   background-color: white;
   border: 3px solid #000;

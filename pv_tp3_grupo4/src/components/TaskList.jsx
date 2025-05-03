@@ -11,7 +11,8 @@ const TaskList = ({
   onEditChange,
   onEditSave,
   onEditCancel,
-  onCardClick
+  onCardClick,
+  title
 }) => (
   <section
     style={{
@@ -40,7 +41,7 @@ const TaskList = ({
         paddingBottom: 8
       }}
     >
-      Lista de tareas
+      {title || 'Lista de tareas'}
     </h3>
     <div className="task-container" style={{ gap: 20 }}>
       {tasks.length === 0 ? (
@@ -85,7 +86,8 @@ TaskList.propTypes = {
   onEditChange: PropTypes.func,
   onEditSave: PropTypes.func,
   onEditCancel: PropTypes.func,
-  onCardClick: PropTypes.func
+  onCardClick: PropTypes.func,
+  title: PropTypes.string
 };
 
 export default TaskList;
