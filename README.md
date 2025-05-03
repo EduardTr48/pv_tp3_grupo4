@@ -6,4 +6,4 @@ Desarrolo trabajo práctico n° 3
 
 1. Eduardo Tiago Rodriguez - EduardTr48
 2. Pablo Alejandro Rodriguez - PabloRZ  
-3. Alex Gabriel Calatayud - 4lexxe
+3. Alex Gabriel Calatayud - 4lexx
