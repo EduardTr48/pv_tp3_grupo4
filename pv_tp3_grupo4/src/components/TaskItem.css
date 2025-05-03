@@ -15,8 +15,9 @@
   margin-left: auto;
   margin-right: auto;
   width: 400px; /* ancho fijo */
-  height: 140px; /* alto fijo */
-  overflow: hidden; /* evita desbordes */
+  min-height: 140px; /* permite crecer si es necesario */
+  height: auto;      /* permite crecer si hay más contenido */
+  overflow: visible; /* permite mostrar el contenido de edición */
 }
 
 .task-item:hover {
@@ -33,6 +34,32 @@
 .task-item.completed .task-title {
   text-decoration: line-through;
   color: #777;
+}
+
+.task-item.editing {
+  display: block;
+  min-height: 180px;
+  height: auto;
+  overflow: visible;
+  padding: 18px 12px;
+  background: #f7f7f7;
+}
+
+.task-item.editing form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.task-item.editing input,
+.task-item.editing .task-title,
+.task-item.editing .task-description,
+.task-item.editing .task-date {
+  width: 95% !important;
+  max-width: 95%;
+  box-sizing: border-box;
 }
 
 .task-checkbox {
@@ -118,6 +145,32 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.save-button,
+.cancel-button {
+  background: #fff;
+  border: 2px solid #000;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin: 0 4px;
+  transition: all 0.2s;
+}
+
+.save-button:hover {
+  background: #4caf50;
+  color: #fff;
+  border-color: #4caf50;
+}
+
+.cancel-button:hover {
+  background: #f44336;
+  color: #fff;
+  border-color: #f44336;
 }
 
 .delete-button {
