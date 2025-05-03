@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import './TaskInput.css';
 
 const TaskInput = ({ onAddTask }) => {
   const [title, setTitle] = useState('');
@@ -16,29 +17,29 @@ const TaskInput = ({ onAddTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: 24, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
+    <form className="task-input-form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Título"
         value={title}
         onChange={e => setTitle(e.target.value)}
         required
-        style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc', minWidth: 120 }}
+        className="task-input"
       />
       <input
         type="text"
         placeholder="Descripción"
         value={description}
         onChange={e => setDescription(e.target.value)}
-        style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc', minWidth: 120 }}
+        className="task-input"
       />
       <input
         type="date"
         value={dueDate}
         onChange={e => setDueDate(e.target.value)}
-        style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+        className="task-input"
       />
-      <button type="submit">Agregar</button>
+      <button type="submit" className="task-input-btn">Agregar</button>
     </form>
   );
 };

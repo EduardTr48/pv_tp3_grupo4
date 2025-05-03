@@ -1,0 +1,49 @@
+.task-input-form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 28px;
+  background: #f7f7f7;
+  padding: 18px 16px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.07);
+  border: 1.5px solid #bbb;
+  width: 100%;
+  max-width: 700px;
+}
+
+.task-input {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1.5px solid #bbb;
+  font-size: 1em;
+  min-width: 120px;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.task-input:focus {
+  border-color: #222;
+  outline: none;
+  box-shadow: 0 0 0 2px #e0e0e0;
+}
+
+.task-input-btn {
+  padding: 10px 22px;
+  border-radius: 6px;
+  border: 2px solid #000;
+  background: #222;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.task-input-btn:hover {
+  background: #fff;
+  color: #222;
+  border-color: #222;
+}
