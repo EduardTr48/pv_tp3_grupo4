@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
 import TaskInput from './components/TaskInput';
 
 function App() {
+  // Estado para el tema (claro/oscuro)
+  const [darkMode, setdarkMode] = useState(true);
+
   // Estado para el listado de tareas
   const [tasks, setTasks] = useState([
     {
@@ -39,6 +42,14 @@ function App() {
   // Estado para búsqueda
   const [search, setSearch] = useState('');
   const [searchInput, setSearchInput] = useState('');
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   // Separar tareas pendientes y realizadas, aplicando filtro de búsqueda
   const lowerSearch = search.trim().toLowerCase();
@@ -112,7 +123,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container"  >
       <header>
         <h1>Gestor de Tareas</h1>
       </header>

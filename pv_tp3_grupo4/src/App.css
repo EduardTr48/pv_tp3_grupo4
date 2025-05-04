@@ -21,6 +21,11 @@ body {
   width: 100%;
 }
 
+.dark{
+  background-color: #333;
+  color: #fff;
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -34,6 +39,7 @@ body {
   box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
+
 
 header {
   padding: 24px 20px;
@@ -141,3 +147,4 @@ main h2::after {
 .logo, .card, .read-the-docs {
   display: none;
 }
+
