@@ -127,7 +127,7 @@ function App() {
       <header className={darkMode ? 'dark' : ''}>
         <h1>Gestor de Tareas</h1>
       </header>
-      <main>
+      <main className={darkMode ? 'dark' : ''}>
         <h2>Mis Tareas</h2>
         <div style={{
           display: 'flex',
