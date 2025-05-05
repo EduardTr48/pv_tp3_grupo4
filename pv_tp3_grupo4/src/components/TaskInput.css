@@ -17,7 +17,7 @@
 .task-input-form.dark{
   background: #333;
   color: #fff;
-  border: 1.5px solid #000000;
+  border: 2px solid #000000;
 
 }
 
@@ -30,6 +30,7 @@
   background: #fff;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
+
 
 .task-input:focus {
   border-color: #222;
