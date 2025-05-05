@@ -11,21 +11,24 @@ function App() {
       title: 'Completar tarea de programación',
       description: 'Terminar implementación de componentes en React',
       dueDate: '2023-06-15',
-      completed: false
+      completed: false,
+      priority: 'media'
     },
     {
       id: 2,
       title: 'Estudiar para el examen',
       description: 'Repasar temas de componentes y props',
       dueDate: '2023-06-10',
-      completed: true
+      completed: true,
+      priority: 'alta'
     },
     {
       id: 3,
       title: 'Hacer compras',
       description: 'Conseguir ingredientes para la cena',
       dueDate: '2023-06-08',
-      completed: false
+      completed: false,
+      priority: 'baja'
     }
   ]);
 
@@ -54,7 +57,7 @@ function App() {
   );
 
   // Agregar nueva tarea (recibe datos del formulario)
-  const handleAddTask = ({ title, description, dueDate }) => {
+  const handleAddTask = ({ title, description, dueDate, priority }) => {
     setTasks([
       ...tasks,
       {
@@ -62,7 +65,8 @@ function App() {
         title,
         description,
         dueDate,
-        completed: false
+        completed: false,
+        priority
       }
     ]);
   };

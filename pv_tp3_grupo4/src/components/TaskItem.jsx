@@ -11,7 +11,8 @@ const TaskItem = ({
   onEditChange,
   onEditSave,
   onEditCancel,
-  onCardClick
+  onCardClick,
+  priority
 }) => {
   if (isEditing) {
     return (
@@ -61,7 +62,7 @@ const TaskItem = ({
 
   return (
     <div
-      className={`task-item ${task.completed ? 'completed' : ''}`}
+      className={`task-item ${task.completed ? 'completed' : ''} priority-${priority}`}
       onClick={e => {
         if (
           e.target.classList.contains('task-checkbox') ||
@@ -97,7 +98,8 @@ TaskItem.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     dueDate: PropTypes.string,
-    completed: PropTypes.bool
+    completed: PropTypes.bool,
+    priority: PropTypes.string
   }).isRequired,
   onToggle: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
@@ -107,7 +109,8 @@ TaskItem.propTypes = {
   onEditChange: PropTypes.func,
   onEditSave: PropTypes.func,
   onEditCancel: PropTypes.func,
-  onCardClick: PropTypes.func
+  onCardClick: PropTypes.func,
+  priority: PropTypes.string
 };
 
 export default TaskItem;
