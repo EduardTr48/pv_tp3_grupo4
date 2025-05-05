@@ -20,6 +20,14 @@
   overflow: visible; /* permite mostrar el contenido de edición */
 }
 
+.task-item.dark{
+  background-color: #585858;
+  border-color: #444;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+
 .task-item:hover {
   transform: translateY(-2px);
   box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
@@ -28,6 +36,12 @@
 .task-item.completed {
   background-color: #f5f5f5;
   border-color: #ccc;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.task-item.completed.dark{
+  background-color: #585858;
+  border-color: #444;
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -43,6 +57,11 @@
   overflow: visible;
   padding: 18px 12px;
   background: #f7f7f7;
+}
+
+.task-item.editing.dark{
+  background: #444;
+  color: #fff;
 }
 
 .task-item.editing form {
@@ -117,6 +136,10 @@
   text-overflow: ellipsis;
 }
 
+.task-title.dark{
+  color: #fff;
+}
+
 .task-description {
   margin: 0 0 10px 0;
   font-size: 14px;
@@ -127,6 +150,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.task-description.dark{
+  color: #c7c7c7;
 }
 
 .task-date {
@@ -194,4 +221,8 @@
 .delete-button:hover {
   background-color: #000;
   color: #fff;
+}
+
+.edit-button.dark{
+  background-color: #585858;
 }

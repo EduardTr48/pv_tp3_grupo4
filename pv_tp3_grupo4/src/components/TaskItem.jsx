@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import './TaskItem.css';
 
 const TaskItem = ({
+  darkMode,
   task,
   onToggle,
   onDelete,
@@ -15,7 +16,7 @@ const TaskItem = ({
 }) => {
   if (isEditing) {
     return (
-      <div className={`task-item editing`}>
+      <div className={`task-item ${darkMode ? 'dark' : ''} editing`}>
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -61,7 +62,7 @@ const TaskItem = ({
 
   return (
     <div
-      className={`task-item ${task.completed ? 'completed' : ''}`}
+      className={`task-item ${darkMode ? 'dark' : ''} ${task.completed ? 'completed' : ''}`}
       onClick={e => {
         if (
           e.target.classList.contains('task-checkbox') ||
@@ -79,13 +80,13 @@ const TaskItem = ({
         className="task-checkbox"
       />
       <div className="task-content">
-        <h3 className="task-title">{task.title}</h3>
-        {task.description && <p className="task-description">{task.description}</p>}
+        <h3 className={`task-title ${darkMode ? 'dark': ''}`}>{task.title}</h3>
+        {task.description && <p className={`task-description ${darkMode ? 'dark' : ''}`}>{task.description}</p>}
         {task.dueDate && <p className="task-date">Fecha límite: {task.dueDate}</p>}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
         <button className="delete-button" onClick={onDelete}>✖</button>
-        <button className="edit-button" onClick={onEdit} style={{ marginTop: 4 }}>✎</button>
+        <button className={`edit-button ${darkMode ? 'dark' : ''}`} onClick={onEdit} style={{ marginTop: 4 }}>✎</button>
       </div>
     </div>
   );

@@ -59,6 +59,7 @@ const TaskList = ({
       ) : (
         tasks.map(task => (
           <TaskItem
+            darkMode={darkMode}
             key={task.id}
             task={task}
             onToggle={() => onToggle(task.id)}
