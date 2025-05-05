@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
 import TaskInput from './components/TaskInput';
+import ToggleTheme from './components/ToggleTheme';
 
 function App() {
   // Estado para el tema (claro/oscuro)
@@ -124,6 +125,7 @@ function App() {
 
   return (
     <div className="app-container"  >
+      <ToggleTheme darkMode={darkMode} setDarkMode={setdarkMode} />
       <header className={darkMode ? 'dark' : ''}>
         <h1>Gestor de Tareas</h1>
       </header>

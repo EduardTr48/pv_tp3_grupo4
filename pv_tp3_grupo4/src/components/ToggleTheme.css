@@ -1,0 +1,16 @@
+.toggle{
+    background-color: #fff;
+    width: 100%;
+    padding-top: 5px;
+}
+
+.toggle.dark{
+    background-color: #333;
+    color: #fff;
+}
+
+button.dark{
+    background-color: #333;
+    outline: none;
+}
+
