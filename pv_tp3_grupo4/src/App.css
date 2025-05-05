@@ -12,6 +12,12 @@ body {
   text-align: center; /* Centrar texto por defecto */
 }
 
+body.dark{
+  background-color: #333;
+  color: #fff;
+}
+
+
 #root {
   display: flex; /* Cambiado de grid a flex para mejor centrado */
   min-height: 100vh;
@@ -21,10 +27,6 @@ body {
   width: 100%;
 }
 
-.dark{
-  background-color: #333;
-  color: #fff;
-}
 
 .app-container {
   display: flex;

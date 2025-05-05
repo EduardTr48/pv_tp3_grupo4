@@ -124,7 +124,7 @@ function App() {
 
   return (
     <div className="app-container"  >
-      <header>
+      <header className={darkMode ? 'dark' : ''}>
         <h1>Gestor de Tareas</h1>
       </header>
       <main>
