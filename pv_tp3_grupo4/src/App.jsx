@@ -138,7 +138,7 @@ function App() {
           maxWidth: 950,
           marginBottom: 18
         }}>
-          <TaskInput onAddTask={handleAddTask} />
+          <TaskInput darkMode={darkMode} onAddTask={handleAddTask} />
           <form
             onSubmit={e => {
               e.preventDefault();

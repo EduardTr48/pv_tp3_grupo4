@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './TaskInput.css';
 
-const TaskInput = ({ onAddTask }) => {
+const TaskInput = ({ onAddTask,darkMode }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
@@ -17,7 +17,7 @@ const TaskInput = ({ onAddTask }) => {
   };
 
   return (
-    <form className="task-input-form" onSubmit={handleSubmit}>
+    <form className={`task-input-form ${darkMode ? 'dark' : ''}`} onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Título"
