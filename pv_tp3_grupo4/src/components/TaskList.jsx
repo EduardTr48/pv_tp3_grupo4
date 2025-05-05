@@ -71,6 +71,7 @@ const TaskList = ({
             onEditSave={() => onEditSave(task.id)}
             onEditCancel={onEditCancel}
             onCardClick={() => onCardClick && onCardClick(task)}
+            priority={task.priority}
           />
         ))
       )}

@@ -226,3 +226,6 @@
 .edit-button.dark{
   background-color: #585858;
 }
+.priority-baja {background-color: #03f1037a;}
+.priority-media {background-color: rgba(255, 251, 0, 0.493);}
+.priority-alta {background-color: rgba(236, 0, 47, 0.486);}
