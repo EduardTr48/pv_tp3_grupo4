@@ -5,8 +5,10 @@ import TaskInput from './components/TaskInput';
 import ToggleTheme from './components/ToggleTheme';
 
 function App() {
+  // Detecta si el usuario tiene activado el modo oscuro en su sistema
+  const isActiveDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   // Estado para el tema (claro/oscuro)
-  const [darkMode, setdarkMode] = useState(true);
+  const [darkMode, setdarkMode] = useState(isActiveDarkMode ? true : false);
 
   // Estado para el listado de tareas
   const [tasks, setTasks] = useState([
