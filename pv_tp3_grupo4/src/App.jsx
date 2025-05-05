@@ -255,7 +255,7 @@ function App() {
         >
           <div
             style={{
-              background: '#fff',
+              background: darkMode ? '#333' : '#fff',
               padding: 32,
               borderRadius: 12,
               minWidth: 320,
