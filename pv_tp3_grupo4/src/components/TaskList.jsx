@@ -12,12 +12,13 @@ const TaskList = ({
   onEditSave,
   onEditCancel,
   onCardClick,
-  title
+  title,
+  darkMode
 }) => (
   <section
     style={{
       width: '100%',
-      background: '#fafbfc',
+      background: darkMode ? '#333' : '#fafbfc',
       border: '2px solid #000',
       borderRadius: '12px',
       boxShadow: '4px 4px 0 rgba(0,0,0,0.10)',
@@ -35,15 +36,15 @@ const TaskList = ({
         fontWeight: 700,
         fontSize: '1.3rem',
         letterSpacing: '1px',
-        color: '#222',
+        color: darkMode ? '#ffff': '#222',
         textTransform: 'uppercase',
-        borderBottom: '2px dashed #bbb',
+        borderBottom: darkMode ? '2px dashed #000' : '2px dashed #bbb',
         paddingBottom: 8
       }}
     >
       {title || 'Lista de tareas'}
     </h3>
-    <div className="task-container" style={{ gap: 20 }}>
+    <div className={`task-container ${darkMode ? "dark" : ""} `} style={{ gap: 20 }}>
       {tasks.length === 0 ? (
         <p className="no-tasks" style={{
           color: '#888',

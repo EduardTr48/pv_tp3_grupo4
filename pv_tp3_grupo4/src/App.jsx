@@ -204,6 +204,7 @@ function App() {
         >
           <div style={{ flex: 1, minWidth: 340 }}>
             <TaskList
+              darkMode={darkMode}
               tasks={pendingTasks}
               onToggle={handleToggle}
               onDelete={handleDelete}
@@ -219,6 +220,7 @@ function App() {
           </div>
           <div style={{ flex: 1, minWidth: 340 }}>
             <TaskList
+              darkMode={darkMode}
               tasks={completedTasks}
               onToggle={handleToggle}
               onDelete={handleDelete}
