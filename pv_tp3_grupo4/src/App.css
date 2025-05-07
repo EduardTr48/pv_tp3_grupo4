@@ -116,22 +116,6 @@ main.dark h2{
   color: #fff;
 }
 
-main h2::before, main h2::after {
-  content: '•';
-  position: absolute;
-  bottom: -5px;
-  color: #000;
-  font-size: 22px;
-}
-
-main h2::before {
-  left: 25%;
-}
-
-main h2::after {
-  right: 25%;
-}
-
 .task-container {
   display: flex;
   flex-direction: column;
@@ -151,6 +135,107 @@ main h2::after {
   border-radius: 8px;
   margin: 20px 0;
   width: 90%;
+}
+
+/* Nuevos estilos para el mejorar el posicionamiento */
+
+.input-search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 30px;
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  border: 1.5px solid #bbb;
+  padding: 8px 10px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.search-form.dark {
+  background: #444;
+  border-color: #222;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  font-size: 1em;
+  background: transparent;
+  outline: none;
+  color: #333;
+}
+
+.search-input.dark {
+  color: #fff;
+}
+
+.search-button {
+  border: none;
+  background: none;
+  padding: 10px 12px;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  font-size: 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.search-button:hover {
+  transform: scale(1.1);
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.task-lists-container {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.task-list-wrapper {
+  flex: 1;
+  min-width: 340px;
+}
+
+/* Ajuste responsive */
+@media (max-width: 850px) {
+  .task-lists-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .task-list-wrapper {
+    width: 100%;
+    max-width: 600px;
+  }
 }
 
 @media (max-width: 650px) {

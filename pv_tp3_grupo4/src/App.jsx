@@ -136,81 +136,42 @@ function App() {
         <h1>Gestor de Tareas</h1>
       </header>
       <main className={darkMode ? 'dark' : ''}>
-        <h2>Mis Tareas</h2>
-        <div style={{
-          display: 'flex',
-          gap: 16,
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-          maxWidth: 950,
-          marginBottom: 18
-        }}>
-          <TaskInput darkMode={darkMode} onAddTask={handleAddTask} />
-          <form
-            onSubmit={e => {
-              e.preventDefault();
-              setSearch(searchInput);
-            }}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 0,
-              background: '#f7f7f7',
-              borderRadius: 10,
-              border: '1.5px solid #bbb',
-              padding: '8px 10px',
-              height: 'fit-content'
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Buscar tareas..."
-              value={searchInput}
-              onChange={e => setSearchInput(e.target.value)}
-              style={{
-                padding: '8px 12px',
-                border: 'none',
-                borderRadius: '6px 0 0 6px',
-                fontSize: '1em',
-                background: 'transparent',
-                outline: 'none',
-                minWidth: 120
+        {/* Sección de búsqueda y formulario de entrada */}
+        <div className="input-search-container">
+          <div className="search-container">
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                setSearch(searchInput);
               }}
-            />
-            <button
-              type="submit"
-              style={{
-                border: 'none',
-                background: 'none',
-                padding: '8px 10px',
-                borderRadius: '0 6px 6px 0',
-                cursor: 'pointer',
-                fontSize: 20,
-                color: '#222',
-                display: 'flex',
-                alignItems: 'center'
-              }}
-              aria-label="Buscar"
-              title="Buscar"
+              className="search-form"
             >
-              <span role="img" aria-label="lupa">🔍</span>
-            </button>
-          </form>
+              <input
+                type="text"
+                placeholder="Buscar tareas..."
+                value={searchInput}
+                onChange={e => setSearchInput(e.target.value)}
+                className="search-input"
+              />
+              <button
+                type="submit"
+                className="search-button"
+                aria-label="Buscar"
+                title="Buscar"
+              >
+                <span role="img" aria-label="lupa">🔍</span>
+              </button>
+            </form>
+          </div>
+          
+          <div className="input-container">
+            <TaskInput darkMode={darkMode} onAddTask={handleAddTask} />
+          </div>
         </div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 32,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            width: '100%',
-            maxWidth: 1400,
-            margin: '0 auto'
-          }}
-        >
-          <div style={{ flex: 1, minWidth: 340 }}>
+        
+        {/* Contenedor de listas de tareas */}
+        <div className="task-lists-container">
+          <div className="task-list-wrapper">
             <TaskList
               darkMode={darkMode}
               tasks={pendingTasks}
@@ -226,7 +187,7 @@ function App() {
               title="Tareas pendientes"
             />
           </div>
-          <div style={{ flex: 1, minWidth: 340 }}>
+          <div className="task-list-wrapper">
             <TaskList
               darkMode={darkMode}
               tasks={completedTasks}
@@ -244,6 +205,8 @@ function App() {
           </div>
         </div>
       </main>
+      
+      {/* Modal */}
       {modalTask && (
         <div
           style={{
