@@ -1,20 +1,24 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import './ToggleTheme.css';
-import MoonIcon from './MoonIcon';
-import SunIcon from './SunIcon';
-const ToggleTheme = ({darkMode,setDarkMode}) => {
-    const handleChangeTheme = () => {
-        setDarkMode(!darkMode)
-    }
+
+const ToggleTheme = ({ darkMode, setDarkMode }) => {
   return (
-    <div className={`toggle ${darkMode ? "dark" : ""}`}>
-        <button className={darkMode ? "dark" : ""} onClick={handleChangeTheme}>
-            {darkMode ? <SunIcon /> : <MoonIcon />}
- 
-
-        </button>
+    <div className="theme-toggle-container">
+      <button 
+        onClick={() => setDarkMode(!darkMode)}
+        className={`theme-toggle-button ${darkMode ? 'dark' : 'light'}`}
+        aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+      >
+        {darkMode ? '☀️' : '🌙'}
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default ToggleTheme
+ToggleTheme.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  setDarkMode: PropTypes.func.isRequired
+};
+
+export default ToggleTheme;

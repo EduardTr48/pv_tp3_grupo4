@@ -130,7 +130,7 @@ function App() {
   };
 
   return (
-    <div className="app-container"  >
+    <div className="app-container">
       <ToggleTheme darkMode={darkMode} setDarkMode={setdarkMode} />
       <header className={darkMode ? 'dark' : ''}>
         <h1>Gestor de Tareas</h1>
