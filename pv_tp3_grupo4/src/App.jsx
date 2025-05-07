@@ -63,12 +63,20 @@ function App() {
     
     try {
       const date = new Date(dateString);
-      return date.toLocaleDateString(undefined, {
+      // Verificar si la fecha es válida
+      if (isNaN(date.getTime())) return dateString;
+      
+      // Ajustar la zona horaria para evitar problemas con día incorrecto
+      const adjustedDate = new Date(date);
+      adjustedDate.setMinutes(adjustedDate.getMinutes() + adjustedDate.getTimezoneOffset());
+      
+      // Usar toLocaleDateString con opciones para formatear correctamente
+      return adjustedDate.toLocaleDateString(undefined, {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
       });
-    } catch (e) {
+    } catch {
       return dateString;
     }
   };

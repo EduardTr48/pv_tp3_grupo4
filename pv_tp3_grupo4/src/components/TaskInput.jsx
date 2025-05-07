@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './TaskInput.css';
 
@@ -93,13 +93,21 @@ const TaskInput = ({ onAddTask, darkMode }) => {
     
     try {
       const date = new Date(dateString);
-      return date.toLocaleDateString(undefined, {
+      // Verificar si la fecha es válida
+      if (isNaN(date.getTime())) return '';
+      
+      // Ajustar la zona horaria para evitar problemas con día incorrecto
+      const adjustedDate = new Date(date);
+      adjustedDate.setMinutes(adjustedDate.getMinutes() + adjustedDate.getTimezoneOffset());
+      
+      // Usar toLocaleDateString con opciones para formatear correctamente
+      return adjustedDate.toLocaleDateString(undefined, {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
       });
-    } catch (e) {
-      return dateString;
+    } catch {
+      return '';
     }
   };
 
