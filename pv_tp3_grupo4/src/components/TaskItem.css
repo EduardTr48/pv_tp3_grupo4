@@ -272,13 +272,76 @@
 }
 
 .priority-baja {
-  background-color: #03f1037a;
+  background-color: rgba(3, 241, 3, 0.48) !important;
+  border-color: rgba(0, 170, 0, 0.7) !important;
 }
 
 .priority-media {
-  background-color: rgba(255, 251, 0, 0.493);
+  background-color: rgba(255, 251, 0, 0.493) !important;
+  border-color: rgba(218, 214, 0, 0.7) !important;
 }
 
 .priority-alta {
-  background-color: rgba(236, 0, 47, 0.486);
+  background-color: rgba(236, 0, 47, 0.486) !important;
+  border-color: rgba(190, 0, 38, 0.7) !important;
+}
+
+/* Ajustes especiales para modo oscuro manteniendo los colores de prioridad */
+.task-item.dark.priority-baja .task-title,
+.task-item.dark.priority-media .task-title,
+.task-item.dark.priority-alta .task-title {
+  color: #000;
+}
+
+.task-item.dark.priority-baja .task-description,
+.task-item.dark.priority-media .task-description,
+.task-item.dark.priority-alta .task-description {
+  color: #333;
+}
+
+/* Ajustar el contraste de los elementos para que sean visibles en tarjetas con prioridad */
+.task-item.dark.priority-baja .task-checkbox,
+.task-item.dark.priority-media .task-checkbox,
+.task-item.dark.priority-alta .task-checkbox {
+  border-color: #000;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.task-item.dark.priority-baja .delete-button,
+.task-item.dark.priority-media .delete-button,
+.task-item.dark.priority-alta .delete-button,
+.task-item.dark.priority-baja .edit-button,
+.task-item.dark.priority-media .edit-button,
+.task-item.dark.priority-alta .edit-button {
+  border-color: #000;
+  color: #000;
+}
+
+.task-item.dark.priority-baja .task-content,
+.task-item.dark.priority-media .task-content,
+.task-item.dark.priority-alta .task-content {
+  border-left-color: rgba(0, 0, 0, 0.3);
+  border-right-color: rgba(0, 0, 0, 0.3);
+}
+
+.task-item.dark.priority-baja .task-date,
+.task-item.dark.priority-media .task-date,
+.task-item.dark.priority-alta .task-date {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Estados completados con prioridad */
+.task-item.completed.dark.priority-baja,
+.task-item.completed.dark.priority-media,
+.task-item.completed.dark.priority-alta {
+  opacity: 0.8;
+}
+
+.task-item.completed.dark.priority-baja .task-title,
+.task-item.completed.dark.priority-media .task-title,
+.task-item.completed.dark.priority-alta .task-title {
+  text-decoration: line-through;
+  color: #333;
 }
