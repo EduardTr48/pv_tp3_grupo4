@@ -15,6 +15,22 @@ const TaskItem = ({
   onCardClick,
   priority
 }) => {
+  // Formatear fecha para mostrar en formato local
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (e) {
+      return dateString;
+    }
+  };
+
   if (isEditing) {
     return (
       <div className={`task-item ${darkMode ? 'dark' : ''} editing`}>
@@ -83,7 +99,7 @@ const TaskItem = ({
       <div className="task-content">
         <h3 className={`task-title ${darkMode ? 'dark': ''}`}>{task.title}</h3>
         {task.description && <p className={`task-description ${darkMode ? 'dark' : ''}`}>{task.description}</p>}
-        {task.dueDate && <p className="task-date">Fecha límite: {task.dueDate}</p>}
+        {task.dueDate && <p className="task-date">Fecha límite: {formatDate(task.dueDate)}</p>}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
         <button className="delete-button" onClick={onDelete}>✖</button>

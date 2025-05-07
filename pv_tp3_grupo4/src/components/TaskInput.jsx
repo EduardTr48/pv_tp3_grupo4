@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './TaskInput.css';
 
 const TaskInput = ({ onAddTask, darkMode }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [dueDate, setDueDate] = useState('');
+  
+  // Formatear la fecha de hoy en formato YYYY-MM-DD para el input date
+  const today = new Date().toISOString().split('T')[0];
+  const [dueDate, setDueDate] = useState(today);
   const [priority, setPriority] = useState('sel');
   
   // Estados para los errores de validación
@@ -43,13 +46,13 @@ const TaskInput = ({ onAddTask, darkMode }) => {
       valid = false;
     }
     
-    // Validación de fecha
+    // Validación de fecha (mejorado)
     if (dueDate) {
-      const selectedDate = new Date(dueDate);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0); // Reset time to start of day
+      const selectedDate = new Date(dueDate + 'T00:00:00');
+      const todayDate = new Date();
+      todayDate.setHours(0, 0, 0, 0);
       
-      if (selectedDate < today) {
+      if (selectedDate < todayDate) {
         newErrors.dueDate = 'La fecha no puede ser anterior a hoy';
         valid = false;
       }
@@ -72,7 +75,7 @@ const TaskInput = ({ onAddTask, darkMode }) => {
       // Limpiar formulario
       setTitle('');
       setDescription('');
-      setDueDate('');
+      setDueDate(today);
       setPriority('sel');
       // Limpiar errores
       setErrors({
@@ -81,6 +84,22 @@ const TaskInput = ({ onAddTask, darkMode }) => {
         dueDate: '',
         priority: ''
       });
+    }
+  };
+
+  // Formatear fecha para mostrar en formato local
+  const formatDateToLocalDisplay = (dateString) => {
+    if (!dateString) return '';
+    
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (e) {
+      return dateString;
     }
   };
 
@@ -114,7 +133,13 @@ const TaskInput = ({ onAddTask, darkMode }) => {
           value={dueDate}
           onChange={e => setDueDate(e.target.value)}
           className={`task-input ${errors.dueDate ? 'error-input' : ''}`}
+          min={today} // Evita seleccionar fechas anteriores a hoy
         />
+        {dueDate && (
+          <small className="date-display">
+            {formatDateToLocalDisplay(dueDate)}
+          </small>
+        )}
         {errors.dueDate && <span className="error-message">{errors.dueDate}</span>}
       </div>
       

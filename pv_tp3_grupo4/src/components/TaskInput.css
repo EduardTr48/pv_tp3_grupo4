@@ -110,3 +110,15 @@
 .task-input-form.dark .error-input {
   background-color: #3f2828;
 }
+
+.date-display {
+  font-size: 0.85rem;
+  margin-top: 2px;
+  color: #666;
+  font-style: italic;
+  text-align: left;
+}
+
+.task-input-form.dark .date-display {
+  color: #ccc;
+}
