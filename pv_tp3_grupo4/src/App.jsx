@@ -57,6 +57,22 @@ function App() {
     }
   }, [darkMode]);
 
+  // Función para formatear fechas
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (e) {
+      return dateString;
+    }
+  };
+
   // Separar tareas pendientes y realizadas, aplicando filtro de búsqueda
   const lowerSearch = search.trim().toLowerCase();
   const pendingTasks = tasks.filter(
@@ -130,7 +146,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className={`app-container ${darkMode ? 'dark' : ''}`}>
       <ToggleTheme darkMode={darkMode} setDarkMode={setdarkMode} />
       <header className={darkMode ? 'dark' : ''}>
         <h1>Gestor de Tareas</h1>
@@ -222,13 +238,15 @@ function App() {
         >
           <div
             style={{
-              background: '#fff',
+              background: darkMode ? '#333' : '#fff',
               padding: 32,
               borderRadius: 12,
               minWidth: 320,
               maxWidth: 400,
               boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
-              position: 'relative'
+              position: 'relative',
+              color: darkMode ? '#fff' : '#333',
+              border: darkMode ? '2px solid #fff' : 'none'
             }}
             onClick={e => e.stopPropagation()}
           >
@@ -241,14 +259,19 @@ function App() {
                 background: 'none',
                 border: 'none',
                 fontSize: 22,
-                cursor: 'pointer'
+                cursor: 'pointer',
+                color: darkMode ? '#fff' : '#333'
               }}
               aria-label="Cerrar"
             >✖</button>
             <h2 style={{ marginBottom: 12 }}>{modalTask.title}</h2>
             {modalTask.description && <p style={{ marginBottom: 8 }}>{modalTask.description}</p>}
-            {modalTask.dueDate && <p style={{ color: '#666' }}>Fecha límite: {modalTask.dueDate}</p>}
-            <p style={{ marginTop: 16, fontWeight: 600, color: modalTask.completed ? '#4caf50' : '#f44336' }}>
+            {modalTask.dueDate && (
+              <p style={{ color: darkMode ? '#ccc' : '#666' }}>
+                Fecha límite: {formatDate(modalTask.dueDate)}
+              </p>
+            )}
+            <p style={{ marginTop: 16, fontWeight: 600, color: modalTask.completed ? (darkMode ? '#6deb7b' : '#4caf50') : (darkMode ? '#ff6b6b' : '#f44336') }}>
               {modalTask.completed ? 'Completada' : 'Pendiente'}
             </p>
           </div>

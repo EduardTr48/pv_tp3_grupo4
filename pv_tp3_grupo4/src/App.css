@@ -43,6 +43,11 @@ body.dark{
   overflow: hidden;
 }
 
+.app-container.dark {
+  background-color: #333;
+  border-color: #fff;
+}
+
 .theme-toggle-container {
   position: absolute;
   top: 10px;
@@ -61,6 +66,7 @@ header {
 header.dark{
   color: #fff;
   background-color: #333;
+  border-bottom-color: #fff;
 }
 
 header h1 {
@@ -81,6 +87,10 @@ header h1::after {
   width: 80%;
   height: 3px;
   background-color: #000;
+}
+
+header.dark h1::after {
+  background-color: #fff;
 }
 
 header.dark h1{
@@ -114,6 +124,7 @@ main h2 {
 
 main.dark h2{
   color: #fff;
+  border-bottom-color: #fff;
 }
 
 .task-container {
@@ -125,6 +136,15 @@ main.dark h2{
   padding: 10px 5px;
 }
 
+.task-container.dark {
+  background-color: #333;
+}
+
+.task-container.dark .no-tasks {
+  background: #444;
+  color: #ccc;
+  border-color: #555;
+}
 
 .no-tasks {
   text-align: center;
@@ -168,7 +188,7 @@ main.dark h2{
 
 .search-form.dark {
   background: #444;
-  border-color: #222;
+  border-color: #555;
 }
 
 .search-input {
@@ -184,6 +204,7 @@ main.dark h2{
 
 .search-input.dark {
   color: #fff;
+  background: transparent;
 }
 
 .search-button {
@@ -197,6 +218,10 @@ main.dark h2{
   display: flex;
   align-items: center;
   transition: transform 0.2s;
+}
+
+.search-button.dark {
+  color: #fff;
 }
 
 .search-button:hover {

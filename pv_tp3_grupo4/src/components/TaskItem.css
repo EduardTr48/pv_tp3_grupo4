@@ -20,17 +20,14 @@
   overflow: visible; /* permite mostrar el contenido de edición */
 }
 
-.task-item.dark{
-  background-color: #585858;
-  border-color: #444;
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+.task-item.dark {
+  background-color: #444;
+  border-color: #fff;
+  box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.1);
 }
 
-
-
-.task-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
+.task-item.dark:hover {
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
 .task-item.completed {
@@ -39,15 +36,19 @@
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.task-item.completed.dark{
-  background-color: #585858;
+.task-item.completed.dark {
+  background-color: #383838;
   border-color: #444;
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .task-item.completed .task-title {
   text-decoration: line-through;
   color: #777;
+}
+
+.task-item.completed.dark .task-title {
+  text-decoration: line-through;
+  color: #aaa;
 }
 
 .task-item.editing {
@@ -59,8 +60,8 @@
   background: #f7f7f7;
 }
 
-.task-item.editing.dark{
-  background: #444;
+.task-item.editing.dark {
+  background: #3a3a3a;
   color: #fff;
 }
 
@@ -94,8 +95,17 @@
   margin: 0 auto;
 }
 
+.task-item.dark .task-checkbox {
+  border-color: #fff;
+  background-color: #333;
+}
+
 .task-checkbox:checked {
   background-color: #f0f0f0;
+}
+
+.task-item.dark .task-checkbox:checked {
+  background-color: #555;
 }
 
 .task-checkbox:checked::after {
@@ -107,6 +117,10 @@
   color: #000;
   font-size: 14px;
   font-weight: bold;
+}
+
+.task-item.dark .task-checkbox:checked::after {
+  color: #fff;
 }
 
 .task-content {
@@ -123,6 +137,11 @@
   overflow: hidden;
 }
 
+.task-item.dark .task-content {
+  border-left-color: #555;
+  border-right-color: #555;
+}
+
 .task-title {
   margin: 0 0 8px 0;
   font-size: 18px;
@@ -136,7 +155,7 @@
   text-overflow: ellipsis;
 }
 
-.task-title.dark{
+.task-title.dark {
   color: #fff;
 }
 
@@ -152,8 +171,8 @@
   text-overflow: ellipsis;
 }
 
-.task-description.dark{
-  color: #c7c7c7;
+.task-description.dark {
+  color: #ccc;
 }
 
 .task-date {
@@ -174,6 +193,12 @@
   text-overflow: ellipsis;
 }
 
+.task-item.dark .task-date {
+  background-color: #333;
+  color: #bbb;
+  border-color: #555;
+}
+
 .save-button,
 .cancel-button {
   background: #fff;
@@ -186,6 +211,13 @@
   border-radius: 6px;
   margin: 0 4px;
   transition: all 0.2s;
+}
+
+.task-item.dark .save-button,
+.task-item.dark .cancel-button {
+  background: #444;
+  border-color: #fff;
+  color: #fff;
 }
 
 .save-button:hover {
@@ -218,14 +250,35 @@
   margin: 0 auto;
 }
 
+.task-item.dark .delete-button,
+.task-item.dark .edit-button {
+  border-color: #fff;
+  color: #fff;
+}
+
+.task-item.dark .delete-button:hover,
+.task-item.dark .edit-button:hover {
+  background-color: #666;
+  color: #fff;
+}
+
 .delete-button:hover {
   background-color: #000;
   color: #fff;
 }
 
-.edit-button.dark{
+.edit-button.dark {
   background-color: #585858;
 }
-.priority-baja {background-color: #03f1037a;}
-.priority-media {background-color: rgba(255, 251, 0, 0.493);}
-.priority-alta {background-color: rgba(236, 0, 47, 0.486);}
+
+.priority-baja {
+  background-color: #03f1037a;
+}
+
+.priority-media {
+  background-color: rgba(255, 251, 0, 0.493);
+}
+
+.priority-alta {
+  background-color: rgba(236, 0, 47, 0.486);
+}

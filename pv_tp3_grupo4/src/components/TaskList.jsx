@@ -18,15 +18,15 @@ const TaskList = ({
   <section
     style={{
       width: '100%',
-      background: darkMode ? '#333' : '#fafbfc',
-      border: '2px solid #000',
+      background: darkMode ? '#2a2a2a' : '#fafbfc',
+      border: darkMode ? '2px solid #fff' : '2px solid #000',
       borderRadius: '12px',
-      boxShadow: '4px 4px 0 rgba(0,0,0,0.10)',
+      boxShadow: darkMode ? '4px 4px 0 rgba(0,0,0,0.2)' : '4px 4px 0 rgba(0,0,0,0.10)',
       padding: '18px 0 10px 0',
       margin: '0 auto 24px auto',
       maxWidth: 650,
       minHeight: 120,
-      transition: 'box-shadow 0.2s'
+      transition: 'all 0.2s'
     }}
   >
     <h3
@@ -36,9 +36,9 @@ const TaskList = ({
         fontWeight: 700,
         fontSize: '1.3rem',
         letterSpacing: '1px',
-        color: darkMode ? '#ffff': '#222',
+        color: darkMode ? '#fff': '#222',
         textTransform: 'uppercase',
-        borderBottom: darkMode ? '2px dashed #000' : '2px dashed #bbb',
+        borderBottom: darkMode ? '2px dashed #fff' : '2px dashed #bbb',
         paddingBottom: 8
       }}
     >
@@ -47,12 +47,12 @@ const TaskList = ({
     <div className={`task-container ${darkMode ? "dark" : ""} `} style={{ gap: 20 }}>
       {tasks.length === 0 ? (
         <p className="no-tasks" style={{
-          color: '#888',
+          color: darkMode ? '#aaa' : '#888',
           fontStyle: 'italic',
           padding: '40px 0',
-          border: '2px dashed #ccc',
+          border: darkMode ? '2px dashed #fff' : '2px dashed #ccc',
           borderRadius: 8,
-          background: '#fff'
+          background: darkMode ? '#333' : '#fff'
         }}>
           No hay tareas disponibles
         </p>

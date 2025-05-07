@@ -18,8 +18,7 @@
 .task-input-form.dark{
   background: #333;
   color: #fff;
-  border: 2px solid #000000;
-
+  border: 2px solid #fff;
 }
 
 .task-input {
@@ -53,6 +52,17 @@
   height: 42px; /* Misma altura que los inputs */
   align-self: center; /* Centrar el botón verticalmente */
   margin-top: 21px; /* Ajustar para alinear con los inputs (compensar los labels/errores) */
+}
+
+.task-input-form.dark .task-input-btn {
+  border-color: #fff;
+  background: #444;
+}
+
+.task-input-form.dark .task-input-btn:hover {
+  background: #333;
+  color: #fff;
+  border-color: #fff;
 }
 
 .task-input-btn:hover {
