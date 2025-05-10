@@ -1,6 +1,6 @@
 # pv_tp3_grupo4
 
-Desarrolo trabajo práctico n° 3
+Desarrollo trabajo práctico n° 3
 
 ## lista de integrantes del grupo 4
 
