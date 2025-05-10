@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacto con Museos de Jujuy. Formulario de contacto e información.">
+    <meta name="keywords" content="museos, Jujuy, contacto, formulario, información, ubicación">
+    <title>Museos de Jujuy - Contacto</title>
+    <!-- 
+      Estrategia de aplicación de estilos CSS:
+      1. Estilos externos generales (style.css, style_museos.css) - Diseño global del sitio
+      2. Estilos externos específicos (contacto.css) - Funcionalidad específica de la página
+      3. Estilos internos (sección style) - Mejoras visuales y animaciones específicas
+      4. Estilos inline - Solo para atributos dinámicos o críticos para el renderizado
+    -->
+    <link rel="stylesheet" href="assets/css/style_museos.css">
+    <link rel="stylesheet" href="assets/css/contacto.css">
+    <!-- Estilos internos para componentes específicos de esta página -->
+    <style>
+      /* Variables específicas para esta página */
+      :root {
+        --color-required: #ff7b54;
+        --transition-speed: 0.3s;
+      }
+
+      /* Mejoras visuales específicas para esta página */
+      .featured-section {
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      .contacto-form fieldset:hover,
+      .sidebar-section:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Estilos específicos para interactividad de FAQ */
+      @media (hover: hover) {
+        .faq-question:hover {
+          background-color: rgba(184, 193, 236, 0.15);
+          transform: translateX(5px);
+        }
+      }
+
+      /* Animación de pulso para el botón enviar */
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+
+      .btn-enviar:hover {
+        animation: pulse 1.5s infinite;
+      }
+    </style>
+</head>
+<body>
+    <div class="museo-container">
+        <header class="museo-header">
+            <h1 class="museo-title">Museos de Jujuy</h1>
+            <nav class="museo-navbar" aria-label="Navegación principal">
+              <ul class="navbar-list">
+                <li><a href="index.html" class="navbar-link">Inicio</a></li>
+                <li><a href="sobre-nosotros.html" class="navbar-link">Nosotros</a></li>
+                <li><a href="contacto.html" class="navbar-link" aria-current="page">Contacto</a></li>
+              </ul>
+            </nav>
+          </header>
+        <main class="museo-layout">
+          <!-- Columna principal con formulario -->
+          <div class="museo-main">
+            <section class="featured-section" aria-labelledby="contacto-titulo">
+              <h2 id="contacto-titulo" class="contacto-heading">Contacto</h2>
+
+              <p class="intro-contacto">Complete el siguiente formulario para ponerse en contacto con nosotros. Responderemos a su consulta en un plazo máximo de 48 horas hábiles. Sus datos serán tratados conforme a nuestra <a href="#" class="policy-link">política de privacidad</a>.</p>
+              <form id="formulario-contacto" class="contacto-form" action="#" method="POST" aria-labelledby="contacto-titulo">
+                <p class="form-info">Los campos marcados con <span class="required-field" aria-hidden="true">*</span> son obligatorios</p>
+                <fieldset>
+                  <legend>Información personal</legend>
+                  <div class="form-group">
+                    <label for="nombre" class="form-label">Nombre completo <span class="required-field" aria-hidden="true">*</span></label>
+                    <input type="text" id="nombre" name="nombre" class="form-input" required 
+                           pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,50}" 
+                           placeholder="Ingrese su nombre completo"
+                           title="Ingrese un nombre válido (solo letras y espacios)"
+                           aria-required="true">
+                    <span class="error-message" aria-live="polite" id="nombre-error"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email" class="form-label">Correo electrónico <span class="required-field" aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" class="form-input" required
+                           placeholder="ejemplo@correo.com"
+                           aria-required="true"
+                           aria-describedby="email-error">
+                    <span class="error-message" aria-live="polite" id="email-error"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-input" 
+                           pattern="[0-9]{10,15}" 
+                           placeholder="Ej. 3884123456"
+                           title="Ingrese un número de teléfono válido"
+                           aria-describedby="telefono-error">
+                    <span class="error-message" aria-live="polite" id="telefono-error"></span>
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>Su mensaje</legend>
+                  <div class="form-group">
+                    <label for="mensaje" class="form-label">Mensaje <span class="required-field" aria-hidden="true">*</span></label>
+                    <textarea id="mensaje" name="mensaje" class="form-textarea" required 
+                              minlength="10" maxlength="500"
+                              placeholder="Escriba su consulta aquí..."
+                              aria-required="true"
+                              aria-describedby="mensaje-error"></textarea>
+                    <span class="error-message" aria-live="polite" id="mensaje-error"></span>
+                    <span class="character-count" aria-live="polite" id="mensaje-contador">0/500 caracteres</span>
+                  </div>
+                </fieldset>
+
+                <div class="form-group">
+                  <button type="submit" class="btn-enviar">Enviar mensaje</button>
+                </div>
+              </form>
+
+              <!-- Sección de Preguntas Frecuentes -->
+              <section class="faq-section" aria-labelledby="faq-heading">
+                <h2 id="faq-heading" class="contacto-heading">Preguntas frecuentes</h2>
+                <ul class="faq-list">
+                  <li class="faq-item">
+                    <input type="checkbox" id="faq1" class="faq-toggle">
+                    <label for="faq1" class="faq-question">¿Ofrecen visitas guiadas para escuelas?</label>
+                    <div class="faq-answer">
+                      <h3>Visitas guiadas para escuelas</h3>
+                      <ol>
+                        <li>Sí, contamos con visitas guiadas especiales para grupos escolares.</li>
+                        <li>Estas visitas están adaptadas según el nivel educativo.</li>
+                        <li>Están diseñadas para complementar el currículo escolar.</li>
+                        <li>Deben reservarse con al menos una semana de anticipación.</li>
+                        <li>Ofrecemos tarifas especiales para instituciones educativas.</li>
+                      </ol>
+                    </div>
+                  </li>
+                  <li class="faq-item">
+                    <input type="checkbox" id="faq2" class="faq-toggle">
+                    <label for="faq2" class="faq-question">¿Se pueden tomar fotografías en los museos?</label>
+                    <div class="faq-answer">
+                      <h3>Fotografías en los museos</h3>
+                      <ol>
+                        <li>Se permite fotografiar sin flash en la mayoría de las salas.</li>
+                        <li>Algunas exhibiciones temporales pueden tener restricciones específicas.</li>
+                        <li>No se permite el uso de trípodes ni equipos profesionales sin autorización previa.</li>
+                        <li>Las fotografías tomadas para fines comerciales requieren un permiso especial.</li>
+                      </ol>
+                    </div>
+                  </li>
+                  <li class="faq-item">
+                    <input type="checkbox" id="faq3" class="faq-toggle">
+                    <label for="faq3" class="faq-question">¿Los museos son accesibles para personas con movilidad reducida?</label>
+                    <div class="faq-answer">
+                      <h3>Accesibilidad para personas con movilidad reducida</h3>
+                      <ol>
+                        <li>Sí, todos nuestros museos cuentan con rampas de acceso.</li>
+                        <li>Disponemos de elevadores en todos los niveles.</li>
+                        <li>Hay baños adaptados para personas con movilidad reducida.</li>
+                        <li>También disponemos de sillas de ruedas que pueden solicitarse en la recepción.</li>
+                        <li>Nuestro personal está capacitado para asistir a visitantes con diferentes necesidades.</li>
+                      </ol>
+                    </div>
+                  </li>
+                  <li class="faq-item">
+                    <input type="checkbox" id="faq4" class="faq-toggle">
+                    <label for="faq4" class="faq-question">¿Tienen estacionamiento disponible?</label>
+                    <div class="faq-answer">
+                      <h3>Estacionamiento disponible</h3>
+                      <ol>
+                        <li>Sí, contamos con estacionamiento propio con capacidad limitada.</li>
+                        <li>Se recomienda llegar temprano, especialmente en días de alta afluencia.</li>
+                        <li>También hay estacionamientos públicos a una cuadra de distancia.</li>
+                        <li>Los visitantes con discapacidad tienen espacios reservados cercanos a la entrada principal.</li>
+                      </ol>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+            </section>
+          </div>
+
+          <!-- Sidebar lateral -->
+          <aside class="museo-sidebar">
+            <section class="sidebar-section" aria-labelledby="info-contacto">
+              <h2 id="info-contacto" class="sidebar-heading">Información de contacto</h2>
+              <p>Puede contactarnos a través de los siguientes medios:</p>
+              <address class="contacto-info">
+                <ul>
+                  <li><strong>Teléfono:</strong> <a href="tel:+5493881234567">(388) 123-4567</a></li>
+                  <li><strong>Email:</strong> <a href="mailto:info@museosjujuy.gob.ar">info@museosjujuy.gob.ar</a></li>
+                  <li><strong>Dirección:</strong> Calle San Martín 450, San Salvador de Jujuy</li>
+                </ul>
+              </address>
+            </section>
+            
+            <section class="sidebar-section info-box" aria-labelledby="horario-atencion">
+              <h2 id="horario-atencion" class="sidebar-heading">Horario de atención</h2>
+              <p>Nuestras oficinas atienden de lunes a viernes de <time datetime="09:00">9:00</time> a <time datetime="17:00">17:00</time> hs.</p>
+              <p>Visitas guiadas: Martes a domingo de <time datetime="10:00">10:00</time> a <time datetime="18:00">18:00</time> hs.</p>
+              <p>Entrada general: $300 - Estudiantes y jubilados: $150 - Menores de 12 años: Gratis</p>
+            </section>
+            
+            <section class="sidebar-section" aria-labelledby="ubicacion">
+              <h2 id="ubicacion" class="sidebar-heading">Ubicación</h2>
+              <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3635.3169833348887!2d-65.30246662391624!3d-24.18572548984701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941b0f285e1dab59%3A0xbf3f70bb553c9300!2sSan%20Salvador%20de%20Jujuy%2C%20Jujuy!5e0!3m2!1ses!2sar!4v1715651424483!5m2!1ses!2sar" 
+                      style="width: 100%; height: 100%; border: none;" 
+                      allowfullscreen="" 
+                      loading="lazy" 
+                      referrerpolicy="no-referrer-when-downgrade"
+                      title="Mapa de ubicación de los Museos de Jujuy"
+                      aria-label="Mapa de Google mostrando la ubicación de los Museos de Jujuy"></iframe>
+              </div>
+            </section>
+          </aside>
+        </main>
+        <footer class="museo-footer">
+          <p>&copy; <time datetime="2025">2025</time> Todos los derechos reservados - Museos de Jujuy</p>
+        </footer>
+    </div>
+
+    <!-- Script mínimo solo para el contador de caracteres -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Contador de caracteres para el textarea de mensaje
+        const mensajeTextarea = document.getElementById('mensaje');
+        const contadorElement = document.getElementById('mensaje-contador');
+        
+        if (mensajeTextarea && contadorElement) {
+          // Actualizar al cargar la página
+          contadorElement.textContent = `0/${mensajeTextarea.getAttribute('maxlength')} caracteres`;
+          
+          mensajeTextarea.addEventListener('input', function() {
+            const caracteresActuales = this.value.length;
+            const caracteresMaximos = this.getAttribute('maxlength');
+            contadorElement.textContent = `${caracteresActuales}/${caracteresMaximos} caracteres`;
+            
+            // Cambiar color cuando se acerca al límite
+            if (caracteresActuales > caracteresMaximos * 0.9) {
+              contadorElement.style.color = '#ff7b54';
+            } else {
+              contadorElement.style.color = '';
+            }
+          });
+        }
+      });
+    </script>
+</body>
+</html>

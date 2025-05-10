@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.log
+*.tmp
+*.swp
+
+# Salidas de compilación
+dist/
+build/
+
+# Archivos de entorno
+.env
+
+# Historial de extensiones de VSCode
+.history/
+
+# Otros archivos y carpetas ocultas
+.idea/
+.vscode/
